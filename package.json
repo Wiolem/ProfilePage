@@ -1,8 +1,9 @@
 {
-  "name": "create-react-app-with-typescript",
-  "version": "3.2.2",
+  "name": "ProfilePage",
+  "version": "1.0.0",
   "private": true,
   "main": "src/index.tsx",
+  "homepage": "https://wiolem.github.io/ProfilePage",
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "^3.0.2",
@@ -21,11 +22,14 @@
   "devDependencies": {
     "@types/jest": "*",
     "@types/node": "*",
+    "gh-pages": "^2.0.1",
     "typescript": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -1,12 +1,12 @@
-# Create React App example with TypeScript
+# ProfilePage
 
 ## How to use
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
+Download the example [or clone the repo](https://github.com/Wiolem/ProfilePage.git):
 
 ```sh
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app-with-typescript
-cd create-react-app-with-typescript
+git clone https://github.com/Wiolem/ProfilePage.git
+cd ProfilePage
 ```
 
 Install it and run:
@@ -16,6 +16,12 @@ npm install
 npm run start
 ```
 
-## The idea behind the example
+## How to use gh-pages
 
-This example demonstrate how you can use [Create React App](https://github.com/facebookincubator/create-react-app) with [TypeScript](https://github.com/Microsoft/TypeScript).
+```sh
+npm run deploy
+```
+
+## License
+
+MIT
