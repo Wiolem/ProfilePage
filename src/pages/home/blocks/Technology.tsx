@@ -10,22 +10,28 @@ var data = [{
   "name": "JavaScript"
 }, {
   "value": 16.5,
+  "name": "HTML"
+}, {
+  "value": 16.5,
   "name": "CSS"
+}, {
+  "value": 16.5,
+  "name": "React"
+}, {
+  "value": 16.5,
+  "name": "Vue"
 }, {
   "value": 16.5,
   "name": "Node"
 }, {
   "value": 15.5,
-  "name": "UI"
+  "name": "UI*"
 }, {
   "value": 14.8,
   "name": "Java"
 }, {
   "value": 13.7,
   "name": "Andriod"
-}, {
-  "value": 13.6,
-  "name": "HTML"
 }, {
   "value": 13.4,
   "name": "SQL"

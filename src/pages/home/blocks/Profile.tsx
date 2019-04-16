@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import PetsIcon from '@material-ui/icons/Pets';
+import TranslateIcon from '@material-ui/icons/Translate';
+import PaletteIcon from '@material-ui/icons/Palette';
 import PrintIcon from '@material-ui/icons/Print';
 import ShareIcon from '@material-ui/icons/Share';
 import withRoot from '../../../withRoot';
@@ -82,8 +84,18 @@ class Profile extends React.Component<WithStyles<typeof styles>, State> {
     const { classes } = this.props;
     const { hidden, open } = this.state;
     const actions = [
+      { icon: <TranslateIcon />, name: 'Translate' },
+      { icon: <PaletteIcon />, name: 'Palette' },
       { icon: <PrintIcon />, name: 'Print' },
       { icon: <ShareIcon />, name: 'Share' },
+    ]
+    const config = [
+      { label: 'EMAIL', text: 'wiolem@hotmail.com' },
+      { label: 'PHONE', text: '178****1892' },
+      { label: 'DOB', text: '06/30/1995 (24)' },
+      { label: 'WORK', text: 'HANGZHOU/CHINA' },
+      { label: 'HOME', text: 'LINZHOU/CHINA' },
+      { label: 'LANGUAGE', text: 'Chinese' },
     ]
     return (
       <div className={classes.root}>
@@ -123,77 +135,22 @@ class Profile extends React.Component<WithStyles<typeof styles>, State> {
           </Typography>
         </div>
         <List className={classes.list}>
-          <ListItem>
-            <ListItemText
-              primary={<Typography component="span" className={classes.listTitle} color="textSecondary">
-                LANGUAGE
-              </Typography>}
-              secondary={
-                <React.Fragment>
-                  <Typography component="span" className={classes.listCon} color="textPrimary">
-                    Chinese
-                  </Typography>
-                  {" — I'll be in your neighborhood doing errands this…"}
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary={<Typography component="span" className={classes.listTitle} color="textSecondary">
-                EMAIL
-              </Typography>}
-              secondary={
-                <React.Fragment>
-                  <Typography component="span" className={classes.listCon} color="textPrimary">
-                    wiolem@hotmail.com
-                  </Typography>
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary={<Typography component="span" className={classes.listTitle} color="textSecondary">
-                PHONE
-              </Typography>}
-              secondary={
-                <React.Fragment>
-                  <Typography component="span" className={classes.listCon} color="textPrimary">
-                    17839221892
-                  </Typography>
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary={<Typography component="span" className={classes.listTitle} color="textSecondary">
-                DOB
-              </Typography>}
-              secondary={
-                <React.Fragment>
-                  <Typography component="span" className={classes.listCon} color="textPrimary">
-                    06/30/1995 (24)
-                  </Typography>
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary={<Typography component="span" className={classes.listTitle} color="textSecondary">
-                ADDRISE
-              </Typography>}
-              secondary={
-                <React.Fragment>
-                  <Typography component="span" className={classes.listCon} color="textPrimary">
-                    HANGZHOU/CHINA
-                  </Typography>
-                </React.Fragment>
-              }
-            />
-          </ListItem>
+          {config.map(({ label, text }, idx) => (
+            <ListItem key={idx} >
+              <ListItemText
+                primary={<Typography component="span" className={classes.listTitle} color="textSecondary">
+                  {label}
+                </Typography>}
+                secondary={
+                  <React.Fragment>
+                    <Typography component="span" className={classes.listCon} color="textPrimary">
+                      {text}
+                    </Typography>
+                  </React.Fragment>
+                }
+              />
+            </ListItem>
+          ))}
         </List>
       </div>
     );

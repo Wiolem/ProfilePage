@@ -13,7 +13,7 @@ const styles = (theme: Theme) =>
     },
     rootLeft: {
       float: 'left',
-      width: '25%',
+      width: theme.spacing.unit * 50,
       height: '100%',
       backgroundColor: theme.palette.primary.dark,
       color: 'red',
