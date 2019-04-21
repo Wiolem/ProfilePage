@@ -13,54 +13,54 @@ const styles = (theme: Theme) =>
     },
   });
 
-type State = {
-  open: boolean;
-};
+type State = {};
 
-var chinaGeoCoordMap: any = {
+const chinaGeoCoordMap: any = {
   '北京市': [116.4551, 40.2539],
   "山东": [117.1582, 36.8701],
   "河南": [113.4668, 34.6234],
   "江苏": [118.8062, 31.9208],
   "浙江": [119.5313, 29.8773],
 };
-var chinaDatas: any = [
-  [{
-    name: '北京市',
-    value: 0
-  }],
-  [{
-    name: '山东',
-    value: 0
-  }],
-  [{
-    name: '河南',
-    value: 0
-  }],
-  [{
-    name: '江苏',
-    value: 0
-  }],
-  [{
-    name: '浙江',
-    value: 1
-  }],
-];
-var series: any = [{
+const chinaDatas: any = [{
+  name: '北京市',
+  value: 0,
+  label: '学习'
+}, {
+  name: '山东',
+  value: 0,
+  label: '泰山深夜爬山看日出'
+}, {
+  name: '河南',
+  value: 0,
+  label: '出生/大学'
+}, {
+  name: '江苏',
+  value: 0,
+  label: '流水线工人'
+}, {
+  name: '浙江',
+  value: 1,
+  label: '工作'
+}];
+const series: any = [{
   type: 'lines',
   zlevel: 2,
+  tooltip: {
+    show: false
+  },
   effect: {
     show: true,
-    period: 4, //箭头指向速度，值越小速度越快
-    trailLength: 0.02, //特效尾迹长度[0,1]值越大，尾迹越长重
-    symbol: 'arrow', //箭头图标
-    symbolSize: 5, //图标大小
+    period: 4,
+    trailLength: 0.02,
+    symbol: 'arrow',
+    symbolSize: 5,
   },
   lineStyle: {
     normal: {
-      width: 1, //尾迹线条宽度
-      opacity: 1, //尾迹线条透明度
-      curveness: .3 //尾迹线条曲直度
+      width: 1,
+      opacity: 1,
+      curveness: .3
     }
   },
   data: [
@@ -74,17 +74,17 @@ var series: any = [{
   type: 'effectScatter',
   coordinateSystem: 'geo',
   zlevel: 2,
-  rippleEffect: { //涟漪特效
-    period: 4, //动画时间，值越小速度越快
-    brushType: 'stroke', //波纹绘制方式 stroke, fill
-    scale: 4 //波纹圆环最大限制，值越大波纹越大
+  rippleEffect: {
+    period: 4,
+    brushType: 'stroke',
+    scale: 4
   },
   label: {
     normal: {
       show: true,
-      position: 'right', //显示位置
-      offset: [5, 0], //偏移设置
-      formatter: function (params: any) { //圆环显示文字
+      position: 'right',
+      offset: [5, 0],
+      formatter: function (params: any) {
         return params.data.name;
       },
       fontSize: 13
@@ -95,7 +95,7 @@ var series: any = [{
   },
   symbol: 'circle',
   symbolSize: function (val: any) {
-    return 5 + val[2] * 5; //圆环大小
+    return 5 + val[2] * 5;
   },
   itemStyle: {
     normal: {
@@ -105,16 +105,18 @@ var series: any = [{
   },
   data: chinaDatas.map(function (dataItem: any) {
     return {
-      name: dataItem[0].name,
-      value: chinaGeoCoordMap[dataItem[0].name].concat([dataItem[0].value])
+      ...dataItem,
+      value: chinaGeoCoordMap[dataItem.name].concat([dataItem.value]),
     };
   }),
 },
-//被攻击点
 {
   type: 'scatter',
   coordinateSystem: 'geo',
   zlevel: 2,
+  tooltip: {
+    show: false
+  },
   rippleEffect: {
     period: 4,
     brushType: 'stroke',
@@ -124,7 +126,6 @@ var series: any = [{
     normal: {
       show: true,
       position: 'right',
-      //offset:[5, 0],
       color: '#0f0',
       formatter: '{b}',
       textStyle: {
@@ -177,16 +178,12 @@ class Location extends React.Component<WithStyles<typeof styles>, State> {
               transitionDuration: 0,
               extraCssText: 'z-index:100',
               formatter: function (params: any) {
-                //根据业务自己拓展要显示的内容
-                var res = "";
-                var name = params.name;
-                var value = params.value[params.seriesIndex + 1];
-                res = "<span style='color:#fff;'>" + name + "</span><br/>数据：" + value;
-                return res;
+                const { data: { name, label } } = params
+                return "<span style='color:#fff;'>" + name + "</span><br/>事迹：" + label;
               }
             },
             backgroundColor: "#013954",
-            visualMap: { //图例值控制
+            visualMap: {
               min: 0,
               max: 1,
               calculable: true,
@@ -198,21 +195,22 @@ class Location extends React.Component<WithStyles<typeof styles>, State> {
             },
             geo: {
               map: 'china',
-              zoom: 2,
+              zoom: 3.5,
               label: {
                 emphasis: {
                   show: false
                 }
               },
-              roam: true, //是否允许缩放
+              center: [115.97, 34.71],
+              roam: true,
               itemStyle: {
                 normal: {
-                  color: 'rgba(51, 69, 89, .5)', //地图背景色
-                  borderColor: '#516a89', //省市边界线00fcff 516a89
+                  color: 'rgba(51, 69, 89, .5)',
+                  borderColor: '#516a89',
                   borderWidth: 1
                 },
                 emphasis: {
-                  color: 'rgba(37, 43, 61, .5)' //悬浮背景
+                  color: 'rgba(37, 43, 61, .5)'
                 }
               }
             },

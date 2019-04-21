@@ -37,21 +37,29 @@ const styles = (theme: Theme) =>
     },
     name: {
       marginTop: theme.spacing.unit * 2,
+      fontSize: 16,
+      color: theme.palette.common.white,
     },
     desc: {
       marginTop: theme.spacing.unit,
+      color: theme.palette.common.white,
     },
     list: {
+      marginTop: theme.spacing.unit * 2,
       color: theme.palette.common.white,
     },
     listTitle: {
       fontSize: 12,
+      color: theme.palette.grey[500]
     },
     listCon: {
       display: 'inline',
       fontSize: 16,
       color: theme.palette.common.white,
     },
+    link: {
+      color: theme.palette.common.white,
+    }
   });
 
 type State = {
@@ -90,12 +98,13 @@ class Profile extends React.Component<WithStyles<typeof styles>, State> {
       { icon: <ShareIcon />, name: 'Share' },
     ]
     const config = [
-      { label: 'EMAIL', text: 'wiolem@hotmail.com' },
-      { label: 'PHONE', text: '178****1892' },
-      { label: 'DOB', text: '06/30/1995 (24)' },
+      { label: 'DOB', text: '06/30/1995' },
       { label: 'WORK', text: 'HANGZHOU/CHINA' },
+      { label: 'EMAIL', text: 'wiolem@hotmail.com' },
       { label: 'HOME', text: 'LINZHOU/CHINA' },
       { label: 'LANGUAGE', text: 'Chinese' },
+      { label: 'WEBSITE', text: <a className={classes.link} href={'https://wiolem.github.io'} >https://wiolem.github.io</a> },
+      { label: 'GITHUB', text: <a className={classes.link} href={'https://github.com/Wiolem'} >https://github.com/Wiolem</a> },
     ]
     return (
       <div className={classes.root}>

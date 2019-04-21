@@ -12,18 +12,7 @@ const styles = (theme: Theme) =>
     },
   });
 
-type State = {
-  open: boolean;
-};
-
-function randomData() {
-  var a = Math.random();
-  if (a > 0 && a <= 0.333)
-    return 0;
-  if (a > 0.333 && a <= 0.666)
-    return 90;
-  return -90;
-}
+type State = {};
 
 function colorData(value: any) {
   if (value > 450)
@@ -37,40 +26,42 @@ function colorData(value: any) {
   return ["saddlebrown", "normal", "黑体"];
 }
 
-//110  35  14/18
-var geoCoordMap: any = {
-  "周杰伦": [108.61, 44.57],
+const geoCoordMap: any = {
+  "2019": [118.38, 30.86],
+  "1995": [110.38, 35.86],
   "林州": [102.89, 37.34],
   "Wiolem": [121.9, 41.05],
-  "2019": [118.38, 30.86],
-  "房东的猫": [105.3, 31.97],
   "河南大学": [106.65, 40.06],
-  "西溪园区": [117.34, 33.63],
-  "JavaScript": [118.34, 39.73],
-  "React": [105.44, 23.89],
+  "JavaScript": [118.34, 37.73],
+  "佛系少女": [105.44, 28.89],
+  "网易云音乐": [100.44, 34.89],
+  "房东的猫": [105.3, 31.97],
+  "周杰伦": [108.61, 44.57],
   "杭州": [97.76, 37.56],
+  "西溪园区": [117.34, 33.63],
+  "盒马": [150.76, 37.56],
 };
 
-//0-500
-var data = [
-  { name: "周杰伦", value: 477 },
+const data = [
+  { name: "2019", value: 448 },
+  { name: "1995", value: 448 },
   { name: "林州", value: 412 },
   { name: "Wiolem", value: 475 },
-  { name: "2019", value: 448 },
-  { name: "房东的猫", value: 460 },
   { name: "河南大学", value: 444 },
-  { name: "西溪园区", value: 368 },
   { name: "JavaScript", value: 458 },
-  { name: "React", value: 490 },
+  { name: "佛系少女", value: 490 },
+  { name: "网易云音乐", value: 490 },
+  { name: "房东的猫", value: 460 },
+  { name: "周杰伦", value: 477 },
   { name: "杭州", value: 449 },
+  { name: "西溪园区", value: 368 },
+  { name: "盒马", value: 449 },
 ];
 
-
-
-var convertData = function (data: any) {
-  var res = [];
-  for (var i = 0; i < data.length; i++) {
-    var geoCoord = geoCoordMap[data[i].name];
+const convertData = function (data: any) {
+  const res = [];
+  for (let i = 0; i < data.length; i++) {
+    const geoCoord = geoCoordMap[data[i].name];
     if (geoCoord) {
       res.push({
         label: {
@@ -79,7 +70,6 @@ var convertData = function (data: any) {
             fontSize: data[i].value / 40 + 6,
             fontWeight: colorData(data[i].value)[1],
             fontFamily: colorData(data[i].value)[2],
-            //rotate: randomData(),
           },
         },
         name: data[i].name,
@@ -90,22 +80,7 @@ var convertData = function (data: any) {
   return res;
 };
 
-class Word extends React.Component<WithStyles<typeof styles>, State> {
-  state = {
-    open: false,
-  };
-
-  handleClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
-
-  handleClick = () => {
-    this.setState({
-      open: true,
-    });
-  };
+class Words extends React.Component<WithStyles<typeof styles>, State> {
 
   render() {
     const { classes } = this.props
@@ -178,4 +153,4 @@ class Word extends React.Component<WithStyles<typeof styles>, State> {
   }
 }
 
-export default withRoot(withStyles(styles)(Word));
+export default withRoot(withStyles(styles)(Words));

@@ -6,9 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import Location from './Location'
-import Words from './Words'
-import Works from './Works'
+import Location from './Location';
+import Words from './Words';
+import Gallery from './Gallery';
 import Technology from './Technology'
 import withRoot from '../../../withRoot';
 
@@ -24,13 +24,12 @@ const styles = (theme: Theme) =>
       height: '100%',
     },
     cardContent: {
-      height: 'calc(100% - 87px)',
+      height: 'calc(100% - 63px)',
+      borderTop: '1px solid #eee',
     }
   });
 
-type State = {
-  open: boolean;
-};
+type State = {};
 
 class Content extends React.Component<WithStyles<typeof styles>, State> {
   state = {
@@ -57,7 +56,7 @@ class Content extends React.Component<WithStyles<typeof styles>, State> {
           <Card className={classes.card} >
             <CardHeader
               title='LOCATION'
-              subheader="September 14, 2016"
+              // subheader="September 14, 2016"
             />
             <CardContent className={classes.cardContent} >
               <Location />
@@ -68,7 +67,7 @@ class Content extends React.Component<WithStyles<typeof styles>, State> {
           <Card className={classes.card} >
             <CardHeader
               title='KEYWORD'
-              subheader="September 14, 2016"
+              // subheader="September 14, 2016"
             />
             <CardContent className={classes.cardContent} >
               <Words />
@@ -79,7 +78,7 @@ class Content extends React.Component<WithStyles<typeof styles>, State> {
           <Card className={classes.card} >
             <CardHeader
               title='Technology'
-              subheader="September 14, 2016"
+              // subheader="September 14, 2016"
             />
             <CardContent className={classes.cardContent} >
               <Technology />
@@ -89,11 +88,11 @@ class Content extends React.Component<WithStyles<typeof styles>, State> {
         <Grid className={classes.item} item xs={6} >
           <Card className={classes.card} >
             <CardHeader
-              title='WORKS'
-              subheader="September 14, 2016"
+              title='Gallery'
+              // subheader="September 14, 2016"
             />
             <CardContent className={classes.cardContent} >
-              <Works />
+              <Gallery />
             </CardContent>
           </Card>
         </Grid>

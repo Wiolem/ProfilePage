@@ -5,40 +5,42 @@ import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import ReactEcharts from "echarts-for-react";
 import withRoot from '../../../withRoot';
 
-var data = [{
-  "value": 17.6,
+const data = [{
+  "value": 5,
   "name": "JavaScript"
 }, {
-  "value": 16.5,
+  "value": 4,
   "name": "HTML"
 }, {
-  "value": 16.5,
+  "value": 4,
   "name": "CSS"
 }, {
-  "value": 16.5,
+  "value": 4,
   "name": "React"
 }, {
-  "value": 16.5,
+  "value": 3,
   "name": "Vue"
 }, {
-  "value": 16.5,
+  "value": 3,
   "name": "Node"
 }, {
-  "value": 15.5,
-  "name": "UI*"
+  "value": 2,
+  "name": "UI"
 }, {
-  "value": 14.8,
+  "value": 2,
   "name": "Java"
 }, {
-  "value": 13.7,
+  "value": 2,
   "name": "Andriod"
 }, {
-  "value": 13.4,
+  "value": 2,
   "name": "SQL"
 }]
 
-for (var n in data) {
-  data[n]['name'] = data[n]['name'] + ' ' + data[n]['value'] + '%'
+const star = (rate: number) => ("★★★★★☆☆☆☆☆".slice(5 - rate, 10 - rate))
+
+for (let n in data) {
+  data[n]['name'] = data[n]['name'] + ' ' + star(data[n]['value'])
 }
 
 const styles = (theme: Theme) =>
@@ -74,12 +76,12 @@ class Index extends React.Component<WithStyles<typeof styles>, State> {
               type: 'treemap',
               width: '100%',
               height: '100%',
-              roam: false, //是否开启拖拽漫游（移动和缩放）
-              nodeClick: false, //点击节点后的行为,false无反应
+              roam: false,
+              nodeClick: false,
               breadcrumb: {
                 show: false
               },
-              label: { //描述了每个矩形中，文本标签的样式。
+              label: {
                 normal: {
                   show: true,
                   position: ['10%', '40%']
@@ -95,7 +97,6 @@ class Index extends React.Component<WithStyles<typeof styles>, State> {
                   borderWidth: 1,
                   borderColor: '#fff',
                 },
-
                 emphasis: {
                   label: {
                     show: true
