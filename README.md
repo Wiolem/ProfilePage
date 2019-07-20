@@ -1,4 +1,4 @@
-# ProfilePage
+# ProfilePage [![Build Status](https://travis-ci.org/Wiolem/ProfilePage.svg?branch=master)](https://travis-ci.org/Wiolem/ProfilePage)
 
 ## How to use
 
