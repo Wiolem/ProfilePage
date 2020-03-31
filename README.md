@@ -2,11 +2,11 @@
 
 ## How to use
 
-Download the example [or clone the repo](https://github.com/Wiolem/ProfilePage.git):
+Download the example [or clone the repo](https://github.com/wiolem/profile-page.git):
 
 ```sh
-git clone https://github.com/Wiolem/ProfilePage.git
-cd ProfilePage
+git clone https://github.com/wiolem/profile-page.git
+cd profile-page
 ```
 
 Install it and run:
